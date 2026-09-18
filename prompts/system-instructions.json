@@ -1,0 +1,121 @@
+{
+  "source": "loomloom-ecom-run/ecom-pro-v4.spec.json",
+  "sourceSha256": "d92a1015d4887413b02b4dec2372abf955ba1b3574d1173ff877c153e6de119b",
+  "specName": "ecom-details-image Pro 强构 v4",
+  "templateInputs": {
+    "creative_brief": {
+      "valueType": "string",
+      "kind": "value"
+    },
+    "image_quality": {
+      "valueType": "string",
+      "kind": "value"
+    },
+    "image_size": {
+      "valueType": "string",
+      "kind": "value"
+    },
+    "product_image": {
+      "valueType": null,
+      "kind": "artifact"
+    },
+    "text_model": {
+      "valueType": "string",
+      "kind": "value"
+    }
+  },
+  "promptSteps": {
+    "stp_prmhero": {
+      "displayName": "主图 Prompt",
+      "profileId": "text.vision.openai-chat.v1",
+      "systemInstruction": "【最高优先级：以随附的参考图为准】你会同时收到一张商品参考图。产品的颜色、材质、表面工艺、结构、比例和外观细节，一律以这张参考图为准，不得自行指定、覆盖或美化；prompt 里的颜色描述和 hex 色值必须来自你对这张参考图的实际观察。任何情况下都不得改变参考图中产品的外观、配色与材质。你是电商主图 Prompt 工程师。把用户的商品创意扩写成一条可直接用于文生图的英文 Prompt。只输出 Prompt 本身，不要解释、不要 Markdown、不要引号。必须写清：主体与材质、正面 45 度视角、柔和均匀的影棚光、纯白背景 RGB(255,255,255)、产品占画面约 60%、顶部中央 200x100 与左上 200x100 区域完全留空作为平台价格位和 logo 位。颜色必须用 hex 值而不是形容词。负面约束必须包含：不要手、不要水印、不要假 logo、不要额外文字、不要道具、不要虚假认证或销量数字。总长度不超过 900 个字符。【构图必须固定不变】prompt 结尾必须一字不改地原样写入下面这句英文，并且不得再添加任何其它关于占比、留白或裁切的描述：\"Framing: product centered, occupying 60% of the frame width, consistent margins on all sides, 15% empty space at the top. Do not crop the product. Do not change this framing.\"",
+      "systemInstructionSha256": "959dc3dd07d38c2bb6cceb8588dfafc05853d6d1f3450e8ef9ce6517102be064",
+      "userTextInputKey": "creative_brief",
+      "userImageInputKey": "product_image",
+      "dependsOn": []
+    },
+    "stp_prmdetl": {
+      "displayName": "详情图 Prompt",
+      "profileId": "text.vision.openai-chat.v1",
+      "systemInstruction": "【最高优先级：以随附的参考图为准】你会同时收到一张商品参考图。产品的颜色、材质、表面工艺、结构、比例和外观细节，一律以这张参考图为准，不得自行指定、覆盖或美化；prompt 里的颜色描述和 hex 色值必须来自你对这张参考图的实际观察。任何情况下都不得改变参考图中产品的外观、配色与材质。你是电商详情页 Prompt 工程师。把用户的商品创意扩写成一条可直接用于图生图的英文 Prompt。只输出 Prompt 本身，不要解释、不要 Markdown、不要引号。必须写清：材质与工艺的微距特写、产品占画面约 70%、强烈侧光、浅景深、极简背景、能看到表面纹理与做工细节。颜色必须用 hex 值而不是形容词。负面约束必须包含：不要手、不要水印、不要假 logo、不要额外文字、不要道具、不要虚假认证或销量数字。总长度不超过 900 个字符。",
+      "systemInstructionSha256": "797c444c3958d573809b9015f3b9d6300743ce1514799c665b87bf9d9e998cba",
+      "userTextInputKey": "creative_brief",
+      "userImageInputKey": "product_image",
+      "dependsOn": []
+    },
+    "stp_prmbnner": {
+      "displayName": "Banner Prompt",
+      "profileId": "text.vision.openai-chat.v1",
+      "systemInstruction": "【最高优先级：以随附的参考图为准】你会同时收到一张商品参考图。产品的颜色、材质、表面工艺、结构、比例和外观细节，一律以这张参考图为准，不得自行指定、覆盖或美化；prompt 里的颜色描述和 hex 色值必须来自你对这张参考图的实际观察。任何情况下都不得改变参考图中产品的外观、配色与材质。你是电商营销 Banner Prompt 工程师。把用户的商品创意扩写成一条可直接用于图生图的英文 Prompt。只输出 Prompt 本身，不要解释、不要 Markdown、不要引号。必须写清：横版构图、产品置于画面右侧三分之一、左侧三分之二保持干净的负空间用于标题文案、扁平背景且不要渐变、主色取自产品本身的 hex 值、整体留白不低于 45%。负面约束必须包含：不要手、不要水印、不要假 logo、不要额外文字、不要道具、不要虚假认证或销量数字。总长度不超过 900 个字符。",
+      "systemInstructionSha256": "db4357591e6bb4fa78be3d2c9084ccb21c4bf4cad1f3fd45b34c95d683d73b05",
+      "userTextInputKey": "creative_brief",
+      "userImageInputKey": "product_image",
+      "dependsOn": []
+    }
+  },
+  "imageSteps": {
+    "stp_t2imain": {
+      "displayName": "文生图样张",
+      "subjectRevisionId": "f08426c2-b6ee-51c8-a128-9dce8784eecc",
+      "promptSourceStepId": "stp_prmhero",
+      "dependsOn": [
+        "stp_prmhero"
+      ],
+      "inputPorts": [
+        "prompt",
+        "quality",
+        "size"
+      ],
+      "size": "3:2",
+      "with_reference": false
+    },
+    "stp_i2imain": {
+      "displayName": "主图（参考图）",
+      "subjectRevisionId": "09c06333-0788-507b-9761-c5fe58e31c35",
+      "promptSourceStepId": "stp_prmhero",
+      "dependsOn": [
+        "stp_prmhero"
+      ],
+      "inputPorts": [
+        "image",
+        "prompt",
+        "quality",
+        "size"
+      ],
+      "size": "3:4",
+      "with_reference": true
+    },
+    "stp_i2idetl": {
+      "displayName": "详情图（参考图）",
+      "subjectRevisionId": "09c06333-0788-507b-9761-c5fe58e31c35",
+      "promptSourceStepId": "stp_prmdetl",
+      "dependsOn": [
+        "stp_prmdetl"
+      ],
+      "inputPorts": [
+        "image",
+        "prompt",
+        "quality",
+        "size"
+      ],
+      "size": "3:4",
+      "with_reference": true
+    },
+    "stp_i2ibnner": {
+      "displayName": "Banner（参考图）",
+      "subjectRevisionId": "09c06333-0788-507b-9761-c5fe58e31c35",
+      "promptSourceStepId": "stp_prmbnner",
+      "dependsOn": [
+        "stp_prmbnner"
+      ],
+      "inputPorts": [
+        "image",
+        "prompt",
+        "quality",
+        "size"
+      ],
+      "size": "16:9",
+      "with_reference": true
+    }
+  }
+}

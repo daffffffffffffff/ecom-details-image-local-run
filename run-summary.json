@@ -1,0 +1,20 @@
+{
+  "note": "主运行（13 行全量）的权威汇总；run-log.jsonl 是原始记录",
+  "run_window": [
+    "2026-09-18 17:55:58",
+    "2026-09-18 18:02:06"
+  ],
+  "rows": 13,
+  "rows_fully_ok": 13,
+  "rows_with_failure": 0,
+  "images_produced": 52,
+  "text_calls_real": 36,
+  "image_calls_real": 48,
+  "failures": 0,
+  "text_model": "google/gemini-2.5-pro",
+  "image_model_used": "openai/gpt-image-2",
+  "model_switched": false,
+  "elapsed_seconds": 368,
+  "cost_usd": null,
+  "cost_note": "本次未逐调用记录费用；按脚本口径 $0.026/张 × 52 ≈ $1.35（脚本已补记录，下次会写入）"
+}
